@@ -1,5 +1,5 @@
 Bem vindo ao projeto!
-Este repositório contém os testes automatizados.
+Este repositório contém os testes automatizados de API.
 
 Usamos a ferramenta: Cypress
 
