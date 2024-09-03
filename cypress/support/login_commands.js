@@ -24,14 +24,21 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-asynclogin(user,password) 
-    await cy.request({
+// cypress/support/commands.js
+// cypress/support/e2e.js ou cypress/support/index.js
+
+
+
+Cypress.Commands.add('login', (username, password) => {
+    console.log (username, password)
+    cy.request({
         method: 'POST',
         url: '/auth',
         failOnStatusCode: false,
         body: {
-            username: 'usernameerrado',
-            password: 'password123'
+            username: username,
+            password: password
         }
-    })
- 
+    });
+});
+

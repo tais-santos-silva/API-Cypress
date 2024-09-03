@@ -1,14 +1,12 @@
 /// <reference types="cypress" />
-import bookingData from '../support/login_commands'
+import login_commands from '../support/login_commands'
 import { faker } from '@faker-js/faker';
 
-const randomEmail = faker.internet.email('tais.santos@TextDecoderStream.com.br');
 
 describe('Login', () => {
 
-
-    it('Login com sucesso', () => {
-        cy.login("Admin", "admin123")
+    it.only('Login com sucesso', () => {
+        cy.login("Admin", "Admin123")
         .then((result) => {
             expect(result.status).to.equal(200);
             expect(result.body).to.not.be.empty;
@@ -16,8 +14,12 @@ describe('Login', () => {
 
     })
 
-    it('Login com username errado', () => {
-        cy.login("usernamerrado", "admin123")
+    it.only('Login com username errado', () => {
+        const usernameerrado  = faker.internet.email();
+        cy.log(`usernameerrado   (E-mail errado): ${usernameerrado}`);
+        console.log(`usernameerrado (E-mail errado): ${usernameerrado}`);
+        
+        cy.login(faker.internet.email(), "Admin123")
          .then((result) => {
             expect(result.status).equal(200);
             expect(result.body).to.not.be.empty;
@@ -26,8 +28,12 @@ describe('Login', () => {
 
     })
 
-    it('Login com senha errada', () => {
-        cy.login("usernamerrado", "admin123")
+    it.only('Login com senha errada', () => {
+        const password  = faker.internet.password();
+        cy.log(`password   (senha errada): ${password}`);
+        console.log(`Password (senha errada): ${password}`);
+
+        cy.login("Admin", faker.internet.password())
         .then((result) => {
            expect(result.status).equal(200);
            expect(result.body).to.not.be.empty;
@@ -37,7 +43,7 @@ describe('Login', () => {
     })
 
     it('Login com username vazio', () => {
-        cy.login("usernamerrado", "admin123")
+        cy.login("", "Admin123")
          .then((result) => {
             expect(result.status).equal(200);
             expect(result.body).to.not.be.empty;
@@ -47,7 +53,7 @@ describe('Login', () => {
 
 
     it('Login com senha vazia', () => {
-        cy.login("usernamerrado", "admin123")
+        cy.login("Admin", "")
          .then((result) => {
             expect(result.status).equal(200);
             expect(result.body).to.not.be.empty;
