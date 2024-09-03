@@ -1,0 +1,13 @@
+name: cypress API testes
+on: 
+    pull_request: 
+      branches: [main]
+
+jobs: 
+  cypress-run:
+      runs-on: windows 
+      steps: 
+        - name: Clonar o projeto
+          uses: actions/checkoutt@v4
+            -name: Cypress run
+             uses: cypress-io/github-action@v6
