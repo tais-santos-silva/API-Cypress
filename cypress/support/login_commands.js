@@ -30,7 +30,7 @@
 
 
 Cypress.Commands.add('login', (username, password) => {
-    console.log (username, password)
+    console.log("Email:", username, "Senha:", password);
     cy.request({
         method: 'POST',
         url: '/auth',

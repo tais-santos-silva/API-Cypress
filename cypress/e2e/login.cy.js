@@ -16,8 +16,8 @@ describe('Login', () => {
 
     it.only('Login com username errado', () => {
         const usernameerrado  = faker.internet.email();
-        cy.log(`usernameerrado   (E-mail errado): ${usernameerrado}`);
-        console.log(`usernameerrado (E-mail errado): ${usernameerrado}`);
+        cy.log(`Email errado: ${usernameerrado}`);
+        console.log(`Email errado: ${usernameerrado}`);
         
         cy.login(faker.internet.email(), "Admin123")
          .then((result) => {
@@ -30,8 +30,8 @@ describe('Login', () => {
 
     it.only('Login com senha errada', () => {
         const password  = faker.internet.password();
-        cy.log(`password   (senha errada): ${password}`);
-        console.log(`Password (senha errada): ${password}`);
+        cy.log(`Senha errada: ${password}`);
+        console.log(`Senha errada: ${password}`);
 
         cy.login("Admin", faker.internet.password())
         .then((result) => {
